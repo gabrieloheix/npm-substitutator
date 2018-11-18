@@ -1,0 +1,11 @@
+#! /usr/bin/env node
+
+const main = require('../dist/main');
+
+
+// TODO commander
+
+
+
+const r = main({});
+console.log("r: ", r);
