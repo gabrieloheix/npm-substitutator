@@ -45,12 +45,39 @@ export class Substitutator {
     const content2 = fs.readFileSync('./example2.txt', 'utf8')
     //console.log("content2: ", content2)
 
-    const offset = content1.indexOf('fichier');
-    console.log("offset: ", offset)
+    const offset1 = content1.indexOf('[[[')
+    //console.log("offset1: ", offset1)
 
-    // build dependency tree
+    const offset2 = content2.indexOf('[[[')
+    //console.log("offset2: ", offset2)
 
-    // write oûtput files
+    const end1 = content1.indexOf(']]]')
+    //console.log("end1: ", end1)
+
+    const end2 = content2.indexOf(']]]')
+    //console.log("end2: ", end2)
+
+    const intermediate = content1.indexOf('|')
+    //console.log("intermediate: ", intermediate)
+
+
+    const tree: any = {}
+
+    const content1a = content1.substring(0, offset1)
+    const content1b = content1.substring(offset1 + 3, intermediate)
+    const content1c = content1.substring(intermediate + 1, end1)
+    const content1d = content1.substring(end1 + 3)
+
+    const content2a = content2.substring(0, offset2)
+    const content2b = content2.substring(offset2 + 3, end2)
+    const content2c = content2.substring(end2 + 3)
+
+    tree[ content1b ] = content1c
+
+
+    fs.writeFileSync('./output1.txt', content1a + content1d)
+
+    fs.writeFileSync('./output2.txt', content2a + tree[ content2b ] + content2c)
 
   }
 
