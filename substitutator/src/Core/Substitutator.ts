@@ -17,6 +17,15 @@ import { Options } from './objects/Options'
 
     import * as fs from 'fs'
 
+
+//import { Context } from './context/Context'
+import { ContextService } from './context/ContextService'
+
+import { SttFileWalkerService } from './filewalker/SttFileWalkerService'
+
+import { SttCompendiumService } from './SttCompendiumService'
+
+
 export class Substitutator {
 
   options: Options
@@ -34,6 +43,8 @@ export class Substitutator {
     // write oûtput files
 
     this.temp()
+
+    this.justLoading()
 
   }
 
@@ -79,6 +90,15 @@ export class Substitutator {
 
     fs.writeFileSync('./output2.txt', content2a + tree[ content2b ] + content2c)
 
+  }
+
+  justLoading(): void {
+      const contextService = new ContextService()
+      const context1 = contextService.newDefaultContext()
+      const fileWalkerService = new SttFileWalkerService(contextService)
+      const fileWalker1 = fileWalkerService.newFileWalker('example1.txt')
+      const compendiumService = new SttCompendiumService()
+      const compendium = compendiumService.newCompendium()
   }
 
 }
