@@ -1,5 +1,5 @@
 //
-//  ContextService.ts
+//  SttContextProvider.ts
 //
 //  Provide Context instances
 //
@@ -13,19 +13,19 @@
 //  Last Modified: November 2018
 //
 
-import { Context } from './Context'
-import { ContextBuilder } from './ContextBuilder'
+import { SttContext } from './context/SttContext'
+import { SttContextBuilder } from './context/SttContextBuilder'
 
 
-export class ContextService {
+export class SttContextProvider {
 
 
   constructor() {
   }
 
 
-  newDefaultContext(): Context {
-    const contextBuilder = new ContextBuilder()
+  newDefaultContext(): SttContext {
+    const contextBuilder = new SttContextBuilder()
     return contextBuilder
       .setIsBlockName(false)
       .build()

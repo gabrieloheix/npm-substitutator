@@ -1,7 +1,7 @@
 //
-//  SttCompendiumService.ts
+//  SttCompendiumProvider.ts
 //
-//  Provide Compendium instances
+//  Provide a Compendium instance
 //
 //
 //  Substitutator
@@ -16,7 +16,7 @@
 import { SttCompendium } from './compendium/SttCompendium'
 
 
-export class SttCompendiumService {
+export class SttCompendiumProvider {
 
 
   constructor() {

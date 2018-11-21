@@ -1,7 +1,7 @@
 //
-//  ContextBuilder.ts
+//  SttContextBuilder.ts
 //
-//  Builder for Context class
+//  Builder for SttContext class
 //
 //
 //  Substitutator
@@ -13,10 +13,10 @@
 //  Last Modified: November 2018
 //
 
-import { Context } from './Context'
+import { SttContext } from './SttContext'
 
 
-export class ContextBuilder {
+export class SttContextBuilder {
 
   isBlockName: boolean
 
@@ -26,7 +26,7 @@ export class ContextBuilder {
   }
 
 
-  setIsBlockName(isBlockName: boolean): ContextBuilder {
+  setIsBlockName(isBlockName: boolean): SttContextBuilder {
     this.isBlockName = isBlockName;
     return this;
   }
@@ -35,8 +35,8 @@ export class ContextBuilder {
     return this.isBlockName;
   }
 
-  build(): Context {
-    return new Context(this);
+  build(): SttContext {
+    return new SttContext(this);
   }
 
 }

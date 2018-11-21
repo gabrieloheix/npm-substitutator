@@ -7,5 +7,6 @@ const main = require('../dist/main');
 
 
 
-const r = main({});
-console.log("r: ", r);
+const all = main({});
+//console.log("y: ", y);
+console.log(all);

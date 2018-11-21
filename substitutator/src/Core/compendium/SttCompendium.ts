@@ -21,4 +21,8 @@ export class SttCompendium {
   }
 
 
+  e(): string {
+    return 'e'
+  }
+
 }

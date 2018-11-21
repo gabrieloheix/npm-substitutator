@@ -13,20 +13,25 @@
 //  Last Modified: November 2018
 //
 
-import { ContextService } from '../context/ContextService'
+import { SttContextProvider } from '../SttContextProvider'
 
 import { SttFileWalkerBuilder } from './SttFileWalkerBuilder'
 
 
 export class SttFileWalker {
 
-  contextService: ContextService
+  contextProvider: SttContextProvider
   path: string
 
 
   constructor(builder: SttFileWalkerBuilder) {
-  	this.contextService = builder.getContextService()
+  	this.contextProvider = builder.getContextProvider()
     this.path = builder.getPath()
+  }
+
+
+  g(): string {
+    return 'g'
   }
 
 }
