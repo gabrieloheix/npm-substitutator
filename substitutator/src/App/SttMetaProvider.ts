@@ -14,7 +14,7 @@
 //
 
 import { SttFileInfoProvider } from '../Util'
-import { SttCompendiumProvider, SttContextProvider, SttFileWalkerProvider } from '../Core'
+import { SttOptionsProvider, SttCompendiumProvider, SttContextProvider, SttFileWalkerProvider } from '../Core'
 
 
 export class SttMetaProvider {
@@ -26,6 +26,10 @@ export class SttMetaProvider {
 
   newFileInfoProvider(): SttFileInfoProvider {
     return new SttFileInfoProvider()
+  }
+
+  newOptionsProvider(): SttOptionsProvider {
+    return new SttOptionsProvider()
   }
 
   newCompendiumProvider(): SttCompendiumProvider {

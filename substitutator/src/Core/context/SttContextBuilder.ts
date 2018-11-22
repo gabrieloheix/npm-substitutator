@@ -22,21 +22,21 @@ export class SttContextBuilder {
 
 
   constructor() {
-    this.isBlockName = false;
+    this.isBlockName = false
   }
 
 
   setIsBlockName(isBlockName: boolean): SttContextBuilder {
-    this.isBlockName = isBlockName;
-    return this;
+    this.isBlockName = isBlockName
+    return this
   }
 
   getIsBlockName(): boolean {
-    return this.isBlockName;
+    return this.isBlockName
   }
 
   build(): SttContext {
-    return new SttContext(this);
+    return new SttContext(this)
   }
 
 }

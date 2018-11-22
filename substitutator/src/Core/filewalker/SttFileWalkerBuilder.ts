@@ -26,25 +26,25 @@ export class SttFileWalkerBuilder {
 
   constructor(contextProvider: SttContextProvider) {
     this.contextProvider = contextProvider
-    this.path = '';
+    this.path = ''
   }
 
 
   getContextProvider(): SttContextProvider {
-    return this.contextProvider;
+    return this.contextProvider
   }
 
   setPath(path: string): SttFileWalkerBuilder {
-    this.path = path;
-    return this;
+    this.path = path
+    return this
   }
 
   getPath(): string {
-    return this.path;
+    return this.path
   }
 
   build(): SttFileWalker {
-    return new SttFileWalker(this);
+    return new SttFileWalker(this)
   }
 
 }

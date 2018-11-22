@@ -13,28 +13,23 @@
 //  Last Modified: November 2018
 //
 
-//import { Substitutator, Options } from './Core'
-
 import { SttSubstitutator, SttMetaProvider } from './App'
 
 
 export = function main(optionsObj: any) {
 
-  //const options = new Options(optionsObj);
+  const metaProvider = new SttMetaProvider()
 
-  //const substitutator = new Substitutator(options);
+  const optionsProvider = metaProvider.newOptionsProvider()
+  const options = optionsProvider.parseOptions(optionsObj);
 
-  //substitutator.substitute();
-
+  const substitutator = new SttSubstitutator(metaProvider, options)
+  substitutator.substitute()
 
 
   let all = 'a'
-
-  const metaProvider = new SttMetaProvider()
-  const substitutator2 = new SttSubstitutator(metaProvider)
-  all += substitutator2.b()
-
-  all += substitutator2.dummy()
+  all += substitutator.b()
+  all += substitutator.dummy()
 
   return all
 };
