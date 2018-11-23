@@ -32,4 +32,4 @@ export = function main(optionsObj: any) {
   all += substitutator.dummy()
 
   return all
-};
+}
