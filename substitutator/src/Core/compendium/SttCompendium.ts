@@ -25,4 +25,17 @@ export class SttCompendium {
     return 'e'
   }
 
+
+  blockExists(name: string, filepath: string): boolean {
+    return false
+  }
+
+  addBlock(name: string, filepath: string): void {
+  }
+
+  getBlock(name: string, filepath: string): string {
+    //throw 'rdcdh'
+    return 'sethseththsrth'
+  }
+
 }
