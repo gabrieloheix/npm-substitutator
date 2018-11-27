@@ -56,9 +56,13 @@ export class SttSubstitutator {
     const context = contextProvider.newDefaultContext()
     _ += context.f()
 
-    const fwProvider = this.metaProvider.newFileWalkerProvider(contextProvider)
+    const fwProvider = this.metaProvider.newFileWalkerProvider(contextProvider/*, blockProvider*/)
     const fw = fwProvider.newFileWalker('')
     _ += fw.g()
+
+    const blockProvider = this.metaProvider.newBlockProvider()
+    const block = blockProvider.newBlock('')
+    _ += block.h()
 
     return _
   }

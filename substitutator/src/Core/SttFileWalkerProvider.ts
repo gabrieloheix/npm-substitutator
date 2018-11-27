@@ -24,12 +24,12 @@ export class SttFileWalkerProvider {
   contextProvider: SttContextProvider
 
 
-  constructor(contextProvider: SttContextProvider) {
+  constructor(contextProvider: SttContextProvider/*, block*/) {
     this.contextProvider = contextProvider
   }
 
 
-  newFileWalker(fileName: string): SttFileWalker {
+  newFileWalker(fileName: string/*, compendium*/): SttFileWalker {
     const fileWalkerBuilder = new SttFileWalkerBuilder(this.contextProvider)
     return fileWalkerBuilder
       .setPath(fileName)

@@ -13,11 +13,16 @@
 //  Last Modified: November 2018
 //
 
+import { SttBlock } from '../block/SttBlock'
+
 
 export class SttCompendium {
 
+  private blocks: SttBlock[]
+
 
   constructor() {
+    this.blocks = []
   }
 
 
@@ -30,12 +35,13 @@ export class SttCompendium {
     return false
   }
 
-  addBlock(name: string, filepath: string): void {
+  addBlock(name: string, filepath: string, block: SttBlock): void {
+    this.blocks.push(block)
   }
 
-  getBlock(name: string, filepath: string): string {
+  getBlock(name: string, filepath: string): SttBlock {
     //throw 'rdcdh'
-    return 'sethseththsrth'
+    return this.blocks[0]
   }
 
 }

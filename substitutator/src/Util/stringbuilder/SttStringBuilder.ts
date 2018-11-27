@@ -48,7 +48,7 @@ export class SttStringBuilder {
 
   private swallow(): void {
     this.concatenated += this.recent.join('')
-    this.recent = []
+    this.recent.length = 0
   }
 
 }

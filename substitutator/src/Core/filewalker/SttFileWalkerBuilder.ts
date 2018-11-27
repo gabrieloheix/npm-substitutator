@@ -24,7 +24,7 @@ export class SttFileWalkerBuilder {
   path: string
 
 
-  constructor(contextProvider: SttContextProvider) {
+  constructor(contextProvider: SttContextProvider/*, block*/) {
     this.contextProvider = contextProvider
     this.path = ''
   }

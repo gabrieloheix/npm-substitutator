@@ -2,6 +2,9 @@
 export { SttOptions } from './options/SttOptions'
 export { SttOptionsProvider } from './SttOptionsProvider'
 
+export { SttBlock } from './block/SttBlock'
+export { SttBlockProvider } from './SttBlockProvider'
+
 export { SttCompendium } from './compendium/SttCompendium'
 export { SttCompendiumProvider } from './SttCompendiumProvider'
 
