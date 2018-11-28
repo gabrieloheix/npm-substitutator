@@ -28,6 +28,7 @@ export class SttOptionsProvider {
     const optionsBuilder = new SttOptionsBuilder()
     return optionsBuilder
       .setOption1(4)
+      .setVerbose(optionsObj.verbose)
       .build()
   }
 

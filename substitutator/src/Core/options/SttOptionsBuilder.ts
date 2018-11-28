@@ -19,10 +19,12 @@ import { SttOptions } from './SttOptions'
 export class SttOptionsBuilder {
 
   option1: number
+  verbose: boolean
 
 
   constructor() {
     this.option1 = 0
+    this.verbose = false
   }
 
 
@@ -33,6 +35,15 @@ export class SttOptionsBuilder {
 
   getOption1(): number {
     return this.option1
+  }
+
+  setVerbose(verbose: boolean): SttOptionsBuilder {
+    this.verbose = verbose
+    return this
+  }
+
+  getVerbose(): boolean {
+    return this.verbose
   }
 
   build(): SttOptions {
