@@ -27,7 +27,7 @@ export class SttContextProvider {
   newDefaultContext(): SttContext {
     const contextBuilder = new SttContextBuilder()
     return contextBuilder
-      .setIsBlockName(false)
+      .setBlockName(false)
       .build()
   }
 

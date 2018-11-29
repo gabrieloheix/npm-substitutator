@@ -19,7 +19,7 @@ import { SttOptionsBuilder } from './SttOptionsBuilder'
 export class SttOptions {
 
   option1: number
-  verbose: boolean
+  private verbose: boolean
 
 
   constructor(builder: SttOptionsBuilder) {

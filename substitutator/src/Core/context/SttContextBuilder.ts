@@ -18,21 +18,21 @@ import { SttContext } from './SttContext'
 
 export class SttContextBuilder {
 
-  isBlockName: boolean
+  private blockName: boolean
 
 
   constructor() {
-    this.isBlockName = false
+    this.blockName = false
   }
 
 
-  setIsBlockName(isBlockName: boolean): SttContextBuilder {
-    this.isBlockName = isBlockName
+  setBlockName(blockName: boolean): SttContextBuilder {
+    this.blockName = blockName
     return this
   }
 
-  getIsBlockName(): boolean {
-    return this.isBlockName
+  getBlockName(): boolean {
+    return this.blockName
   }
 
   build(): SttContext {
