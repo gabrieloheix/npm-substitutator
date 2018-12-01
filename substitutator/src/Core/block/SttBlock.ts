@@ -13,32 +13,51 @@
 //  Last Modified: November 2018
 //
 
+import { SttFileInfo } from '../../Util'
+
 import { SttBlockBuilder } from './SttBlockBuilder'
 
 
 export class SttBlock {
 
   private name: string
-  //fileinfo
-  //offset
-  //end
-  //dependencies
+  private file: SttFileInfo
+  private offsetBegin: number
+  private offsetEnd: number
+  private dependencies: SttBlock[]
 
 
   constructor(builder: SttBlockBuilder) {
+    this.file = builder.getFileInfo()
     this.name = builder.getName()
+    this.offsetBegin = builder.getOffsetBegin()
+    this.offsetEnd = builder.getOffsetEnd()
+    this.dependencies = builder.getDependencies()
   }
 
 
-  h(): string {
-    return 'h'
+  g(): string {
+    return 'g'
   }
 
-  xxx(xxx: string): void {
+  getFileInfo(): SttFileInfo {
+    return this.file
   }
 
   getName(): string {
     return this.name
+  }
+
+  getOffsetBegin(): number {
+    return this.offsetBegin
+  }
+
+  getOffsetEnd(): number {
+    return this.offsetEnd
+  }
+
+  getDependencies(): SttBlock[] {
+    return this.dependencies
   }
 
 }

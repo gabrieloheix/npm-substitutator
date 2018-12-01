@@ -19,6 +19,7 @@ import { SttMetaProvider } from './SttMetaProvider'
 
 
 import * as fs from 'fs'
+import * as util from '../Util'
 
 
 export class SttSubstitutator {
@@ -45,7 +46,7 @@ export class SttSubstitutator {
     _ += fi.c()
 
     const optionsProvider = this.metaProvider.newOptionsProvider()
-    const options = optionsProvider.parseOptions(null)
+    const options = optionsProvider.parseOptions({})
     _ += options.d()
 
     const compendiumProvider = this.metaProvider.newCompendiumProvider()
@@ -56,13 +57,16 @@ export class SttSubstitutator {
     const context = contextProvider.newDefaultContext()
     _ += context.f()
 
-    const fwProvider = this.metaProvider.newFileWalkerProvider(contextProvider/*, blockProvider*/)
-    const fw = fwProvider.newFileWalker('')
-    _ += fw.g()
+    const fileinfo = new util.SttFileInfo('path')
 
     const blockProvider = this.metaProvider.newBlockProvider()
-    const block = blockProvider.newBlock('')
-    _ += block.h()
+    const block = blockProvider.newBlock('', fileinfo, 0, 0, [])
+    _ += block.g()
+
+    const fwProvider = this.metaProvider.newFileWalkerProvider(compendium,
+        contextProvider, blockProvider)
+    const fw = fwProvider.newFileWalker('')
+    _ += fw.h()
 
     return _
   }

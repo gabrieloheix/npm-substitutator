@@ -14,24 +14,30 @@
 //
 
 import { SttContextProvider } from '../SttContextProvider'
+import { SttBlockProvider } from '../SttBlockProvider'
+import { SttCompendium } from '../compendium/SttCompendium'
 
 import { SttFileWalkerBuilder } from './SttFileWalkerBuilder'
 
 
 export class SttFileWalker {
 
-  contextProvider: SttContextProvider
-  path: string
+  private contextProvider: SttContextProvider
+  private blockProvider: SttBlockProvider
+  private compendium: SttCompendium
+  private path: string
 
 
   constructor(builder: SttFileWalkerBuilder) {
-  	this.contextProvider = builder.getContextProvider()
+    this.contextProvider = builder.getContextProvider()
+    this.blockProvider = builder.getBlockProvider()
+    this.compendium = builder.getCompendium()
     this.path = builder.getPath()
   }
 
 
-  g(): string {
-    return 'g'
+  h(): string {
+    return 'h'
   }
 
 }

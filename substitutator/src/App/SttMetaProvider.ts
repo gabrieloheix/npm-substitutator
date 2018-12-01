@@ -18,7 +18,8 @@ import {  SttOptionsProvider,
           SttBlockProvider,
           SttCompendiumProvider,
           SttContextProvider,
-          SttFileWalkerProvider } from '../Core'
+          SttFileWalkerProvider,
+          SttCompendium } from '../Core'
 
 
 export class SttMetaProvider {
@@ -48,8 +49,12 @@ export class SttMetaProvider {
     return new SttContextProvider()
   }
 
-  newFileWalkerProvider(contextProvider: SttContextProvider): SttFileWalkerProvider {
-    return new SttFileWalkerProvider(contextProvider)
+  newFileWalkerProvider(
+      compendium: SttCompendium,
+      contextProvider: SttContextProvider,
+      blockProvider: SttBlockProvider
+  ): SttFileWalkerProvider {
+    return new SttFileWalkerProvider(compendium, contextProvider, blockProvider)
   }
 
 }

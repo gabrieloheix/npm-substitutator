@@ -13,8 +13,6 @@
 //  Last Modified: November 2018
 //
 
-//import { SttFileWalkerBuilder } from './SttFileWalkerBuilder'
-
 
 export class SttFileInfo {
 
