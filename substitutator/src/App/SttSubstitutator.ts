@@ -68,6 +68,29 @@ export class SttSubstitutator {
     const fw = fwProvider.newFileWalker('')
     _ += fw.h()
 
+
+
+    class Foo<T/* = never*/> {
+        bar(item: T): void {
+            console.log('typeof T: ', typeof item)
+        }
+    }
+
+    const foo1 = new Foo<string>() // T specified
+    foo1.bar('hello')
+    //foo1.bar(6) // error TS2345: Argument of type '6' is not assignable to parameter of type 'string'
+
+    const foo2 = new Foo() // T missing
+    foo2.bar('hello')
+    foo2.bar(6) // works with no complaint
+
+
+
+    const dictionary = new util.SttDictionary<string>()
+    dictionary.set('key', 'i')
+    //dictionary.set('number', 6)
+    _ += dictionary.get('key')
+
     return _
   }
 
