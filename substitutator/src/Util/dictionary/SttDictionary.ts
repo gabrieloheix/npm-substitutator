@@ -35,7 +35,7 @@ export class SttDictionary<T = never> {
   }
 
   has(key: string): boolean {
-    return key in this.obj
+    return (key in this.obj)
   }
 
 }
