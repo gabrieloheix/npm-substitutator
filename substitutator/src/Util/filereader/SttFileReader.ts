@@ -1,7 +1,7 @@
 //
 //  SttFileReader.ts
 //
-//  Wrapper for reading file in Node.js
+//  Wrapper for synchronously reading file in Node.js
 //
 //
 //  Substitutator
@@ -13,32 +13,42 @@
 //  Last Modified: December 2019
 //
 
+import * as fs from 'fs'
+
 
 export class SttFileReader {
 
   path: string
+  content: string
+  length: number
+  offset: number
 
 
   constructor(path: string) {
     this.path = path
+    this.content = ''
+    this.length = 0
+    this.offset = 0
   }
 
 
-  hasMore(): boolean {
+  // https://nodejs.org/api/fs.html#fs_fs_readfilesync_path_options
 
-    // todo
-
+  load(): boolean {
+    this.content = fs.readFileSync(this.path, 'utf8')
+    this.length = this.content.length
     return true
   }
 
-  getNextCharacter(): string {
-
-    // todo
-
-    return '@'
+  hasMore(): boolean {
+    if (this.offset >= this.length) {
+      return false;
+    }
+    return true;
   }
 
-  //createReadStream
-  //https://nodejs.org/en/knowledge/advanced/streams/how-to-use-fs-create-read-stream/
+  getNextCharacter(): string {
+    return this.content[ this.offset++ ]
+  }
 
 }
