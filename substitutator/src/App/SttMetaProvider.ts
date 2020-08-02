@@ -10,16 +10,17 @@
 //  License: GPL v3
 //
 //  Creation Date: November 2018
-//  Last Modified: November 2018
+//  Last Modified: July 2020
 //
 
-import { SttFileInfoProvider } from '../Util'
-import {  SttOptionsProvider,
-          SttBlockProvider,
-          SttCompendiumProvider,
-          SttContextProvider,
-          SttFileWalkerProvider,
-          SttCompendium } from '../Core'
+import { SttFileInfoProvider,
+         SttFileReaderProvider } from '../Util'
+import { SttOptionsProvider,
+         SttBlockProvider,
+         SttCompendiumProvider,
+         SttContextProvider,
+         SttFileWalkerProvider,
+         SttCompendium } from '../Core'
 
 
 export class SttMetaProvider {
@@ -31,6 +32,10 @@ export class SttMetaProvider {
 
   newFileInfoProvider(): SttFileInfoProvider {
     return new SttFileInfoProvider()
+  }
+
+  newFileReaderProvider(): SttFileReaderProvider {
+    return new SttFileReaderProvider()
   }
 
   newOptionsProvider(): SttOptionsProvider {
@@ -50,11 +55,14 @@ export class SttMetaProvider {
   }
 
   newFileWalkerProvider(
-      compendium: SttCompendium,
-      contextProvider: SttContextProvider,
-      blockProvider: SttBlockProvider
+        compendium: SttCompendium,
+        fileReaderProvider: SttFileReaderProvider,
+        fileInfoProvider: SttFileInfoProvider,
+        contextProvider: SttContextProvider,
+        blockProvider: SttBlockProvider
   ): SttFileWalkerProvider {
-    return new SttFileWalkerProvider(compendium, contextProvider, blockProvider)
+    return new SttFileWalkerProvider(compendium,
+          fileReaderProvider, fileInfoProvider, contextProvider, blockProvider)
   }
 
 }

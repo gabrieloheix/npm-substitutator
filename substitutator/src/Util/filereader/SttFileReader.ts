@@ -10,7 +10,7 @@
 //  License: GPL v3
 //
 //  Creation Date: December 2019
-//  Last Modified: December 2019
+//  Last Modified: January 2020
 //
 
 import * as fs from 'fs'
@@ -18,10 +18,10 @@ import * as fs from 'fs'
 
 export class SttFileReader {
 
-  path: string
-  content: string
-  length: number
-  offset: number
+  private path: string
+  private content: string
+  private length: number
+  private offset: number
 
 
   constructor(path: string) {
@@ -42,9 +42,9 @@ export class SttFileReader {
 
   hasMore(): boolean {
     if (this.offset >= this.length) {
-      return false;
+      return false
     }
-    return true;
+    return true
   }
 
   getNextCharacter(): string {

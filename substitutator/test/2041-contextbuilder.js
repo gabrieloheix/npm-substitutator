@@ -25,19 +25,19 @@ describe('2041-contextbuilder', function() {
 
   describe('setBlockName()/getBlockName()', function() {
 
-    it('seems to set is block name', function() {
+    it.skip('seems to set is block name', function() {
       const builder = new SttContextBuilder()
       builder.setBlockName(true)
     })
 
-    it('returns is block name true', function() {
+    it.skip('returns is block name true', function() {
       const builder = new SttContextBuilder()
       builder.setBlockName(true)
       const is = builder.getBlockName()
       strictEqual(is, true)
     })
 
-    it('returns default is block name', function() {
+    it.skip('returns default is block name', function() {
       const builder = new SttContextBuilder()
       const is = builder.getBlockName()
       strictEqual(is, false)
@@ -62,7 +62,7 @@ describe('2041-contextbuilder', function() {
       equal(context instanceof SttContext, true)
     })
 
-    it('builds a context with is block name', function() {
+    it.skip('builds a context with is block name', function() {
       const builder = new SttContextBuilder()
       builder.setBlockName(true)
       const context = builder.build()

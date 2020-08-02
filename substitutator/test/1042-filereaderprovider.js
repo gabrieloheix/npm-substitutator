@@ -36,7 +36,12 @@ describe('1042-filereaderprovider', function() {
       equal(filereader1 instanceof SttFileReader, true)
     })
 
-    it.skip('returns a new file reader that has more', function() {
+    it('returns a new file reader that has more', function() {
+      const provider1 = new SttFileReaderProvider()
+      const filereader1 = provider1.newSttFileReader('test/examples/single.txt')
+      filereader1.load()
+      const has = filereader1.hasMore()
+      strictEqual(has, true)
     })
 
   })

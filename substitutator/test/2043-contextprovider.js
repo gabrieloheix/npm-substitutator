@@ -25,18 +25,18 @@ describe('2043-contextprovider', function() {
 
   describe('newDefaultContext()', function() {
 
-    it('seems to return a new context', function() {
+    it.skip('seems to return a new context', function() {
       const provider1 = new SttContextProvider()
       provider1.newDefaultContext()
     })
 
-    it('returns a new context', function() {
+    it.skip('returns a new context', function() {
       const provider1 = new SttContextProvider()
       const context1 = provider1.newDefaultContext()
       equal(context1 instanceof SttContext, true)
     })
 
-    it('returns a new context with block name true', function() {
+    it.skip('returns a new context with block name true', function() {
       const provider1 = new SttContextProvider()
       const context1 = provider1.newDefaultContext()
       const verbose = context1.isBlockName()

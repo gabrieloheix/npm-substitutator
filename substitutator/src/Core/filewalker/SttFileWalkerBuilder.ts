@@ -10,8 +10,11 @@
 //  License: GPL v3
 //
 //  Creation Date: November 2018
-//  Last Modified: November 2018
+//  Last Modified: July 2020
 //
+
+import { SttFileReaderProvider } from '../../Util'
+import { SttFileInfo } from '../../Util'
 
 import { SttContextProvider } from '../SttContextProvider'
 import { SttBlockProvider } from '../SttBlockProvider'
@@ -22,20 +25,26 @@ import { SttFileWalker } from './SttFileWalker'
 
 export class SttFileWalkerBuilder {
 
+  private fileReaderProvider: SttFileReaderProvider
   private contextProvider: SttContextProvider
   private blockProvider: SttBlockProvider
   private compendium: SttCompendium
-  private path: string
+  private fileInfo: SttFileInfo[]  // to not have to init it
 
 
-  constructor(compendium: SttCompendium,
+  constructor(compendium: SttCompendium, fileReaderProvider: SttFileReaderProvider,
       contextProvider: SttContextProvider, blockProvider: SttBlockProvider) {
+    this.fileReaderProvider = fileReaderProvider
     this.contextProvider = contextProvider
     this.blockProvider = blockProvider
     this.compendium = compendium
-    this.path = ''
+    this.fileInfo = []
   }
 
+
+  getFileReaderProvider(): SttFileReaderProvider {
+    return this.fileReaderProvider
+  }
 
   getContextProvider(): SttContextProvider {
     return this.contextProvider
@@ -49,13 +58,13 @@ export class SttFileWalkerBuilder {
     return this.compendium
   }
 
-  setPath(path: string): SttFileWalkerBuilder {
-    this.path = path
+  setFileInfo(fileInfo: SttFileInfo): SttFileWalkerBuilder {
+    this.fileInfo[0] = fileInfo
     return this
   }
 
-  getPath(): string {
-    return this.path
+  getFileInfo(): SttFileInfo {
+    return this.fileInfo[0]
   }
 
   build(): SttFileWalker {

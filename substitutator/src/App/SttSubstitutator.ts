@@ -10,7 +10,7 @@
 //  License: GPL v3
 //
 //  Creation Date: November 2018
-//  Last Modified: November 2018
+//  Last Modified: July 2020
 //
 
 import { SttOptions } from '../Core'
@@ -54,7 +54,7 @@ export class SttSubstitutator {
     _ += compendium.e()
 
     const contextProvider = this.metaProvider.newContextProvider()
-    const context = contextProvider.newDefaultContext()
+    const context = contextProvider.newFileRootContext('')
     _ += context.f()
 
     const fileinfo = new util.SttFileInfo('path')
@@ -63,8 +63,10 @@ export class SttSubstitutator {
     const block = blockProvider.newBlock('', fileinfo, 0, 0, [])
     _ += block.g()
 
+    const fileReaderProvider = this.metaProvider.newFileReaderProvider()
+
     const fwProvider = this.metaProvider.newFileWalkerProvider(compendium,
-        contextProvider, blockProvider)
+          fileReaderProvider, fiProvider, contextProvider, blockProvider)
     const fw = fwProvider.newFileWalker('')
     _ += fw.h()
 

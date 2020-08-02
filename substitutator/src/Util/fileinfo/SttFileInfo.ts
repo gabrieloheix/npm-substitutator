@@ -10,7 +10,7 @@
 //  License: GPL v3
 //
 //  Creation Date: November 2018
-//  Last Modified: November 2018
+//  Last Modified: July 2020
 //
 
 
@@ -26,6 +26,10 @@ export class SttFileInfo {
 
   c(): string {
     return 'c'
+  }
+
+  getPath(): string {
+    return this.path
   }
 
 }

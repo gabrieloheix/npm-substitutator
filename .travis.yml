@@ -1,11 +1,19 @@
 language: node_js
 node_js:
   - "stable"
+  - "15"
+  - "14"
+  - "13"
+  - "12"
   - "11"
   - "10"
   - "9"
   - "8"
-install:
-  - cd substitutator && npm install
+before_install:
+  - cd substitutator
+  - npm install istanbul@0
+  - pip install --user codecov
 script:
-  - cd substitutator && npm run coverage
+  - npm run coverage
+after_success:
+  - codecov --file coverage/lcov.info --disable search
