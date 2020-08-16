@@ -2,6 +2,7 @@
 const { equal, strictEqual, notEqual, throws } = require('assert')
 
 const { SttContext } = require('../dist/Core/context/SttContext')
+const { SttContextBuilder } = require('../dist/Core/context/SttContextBuilder')
 const { SttContextProvider } = require('../dist/Core/SttContextProvider')
 
 
@@ -21,26 +22,91 @@ describe('2043-contextprovider', function() {
 
 
 
-  // newDefaultContext
+  // newFileRootContext
 
-  describe('newDefaultContext()', function() {
+  describe('newFileRootContext()', function() {
 
-    it.skip('seems to return a new context', function() {
+    it('seems to return a new context', function() {
       const provider1 = new SttContextProvider()
-      provider1.newDefaultContext()
+      provider1.newFileRootContext('relative/path.txt')
     })
 
-    it.skip('returns a new context', function() {
+    it('returns a new context', function() {
       const provider1 = new SttContextProvider()
-      const context1 = provider1.newDefaultContext()
+      const context1 = provider1.newFileRootContext('relative/path.txt')
       equal(context1 instanceof SttContext, true)
     })
 
-    it.skip('returns a new context with block name true', function() {
+    it('returns a new context with correct aggregated string', function() {
       const provider1 = new SttContextProvider()
-      const context1 = provider1.newDefaultContext()
-      const verbose = context1.isBlockName()
-      strictEqual(verbose, false)
+      const context1 = provider1.newFileRootContext('relative/path.txt')
+      const filepath = context1.getAggregatedString()
+      strictEqual(filepath, 'relative/path.txt')
+    })
+
+  })
+
+
+
+  // newBlockNameContext
+
+  describe('newBlockNameContext()', function() {
+
+    it('seems to return a new context', function() {
+      const builder1 = new SttContextBuilder()
+      const context1 = new SttContext(builder1)
+      const provider1 = new SttContextProvider()
+      provider1.newBlockNameContext(context1)
+    })
+
+    it('returns a new context', function() {
+      const builder1 = new SttContextBuilder()
+      const context1 = new SttContext(builder1)
+      const provider1 = new SttContextProvider()
+      const context2 = provider1.newBlockNameContext(context1)
+      equal(context2 instanceof SttContext, true)
+    })
+
+    it('returns a new context with is naming phase true', function() {
+      const builder1 = new SttContextBuilder()
+      const context1 = new SttContext(builder1)
+      const provider1 = new SttContextProvider()
+      const context2 = provider1.newBlockNameContext(context1)
+      equal(context2 instanceof SttContext, true)
+      const phase = context2.isNamingPhase()
+      strictEqual(phase, true)
+    })
+
+  })
+
+
+
+  // newBlockDefinitionContext
+
+  describe('newBlockDefinitionContext()', function() {
+
+    it('seems to return a new context', function() {
+      const builder1 = new SttContextBuilder()
+      const context1 = new SttContext(builder1)
+      const provider1 = new SttContextProvider()
+      provider1.newBlockDefinitionContext(context1, 109)
+    })
+
+    it('returns a new context', function() {
+      const builder1 = new SttContextBuilder()
+      const context1 = new SttContext(builder1)
+      const provider1 = new SttContextProvider()
+      const context2 = provider1.newBlockDefinitionContext(context1, 109)
+      equal(context2 instanceof SttContext, true)
+    })
+
+    it('returns a new context with correct offset', function() {
+      const builder1 = new SttContextBuilder()
+      const context1 = new SttContext(builder1)
+      const provider1 = new SttContextProvider()
+      const context2 = provider1.newBlockDefinitionContext(context1, 109)
+      const offset = context2.getOffset()
+      strictEqual(offset, 109)
     })
 
   })

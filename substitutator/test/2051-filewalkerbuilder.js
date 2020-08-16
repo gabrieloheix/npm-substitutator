@@ -2,6 +2,7 @@
 const { equal, strictEqual, notEqual, throws } = require('assert')
 
 const { SttFileReaderProvider } = require('../dist/Util')
+const { SttFileInfoProvider } = require('../dist/Util')
 
 const { SttCompendium } = require('../dist/Core')
 const { SttBlockProvider } = require('../dist/Core/SttBlockProvider')
@@ -17,6 +18,7 @@ describe('2051-filewalkerbuilder', function() {
   const blockProvider1 = new SttBlockProvider()
   const contextProvider1 = new SttContextProvider()
   const fileReaderProvider1 = new SttFileReaderProvider()
+  const fileInfoProvider1 = new SttFileInfoProvider()
 
 
   // class
@@ -136,26 +138,31 @@ describe('2051-filewalkerbuilder', function() {
 
 
 
-  // setPath/getPath
+  // setFileInfo/getFileInfo
 
-  describe('setPath()/getPath()', function() {
+  describe('setFileInfo()/getFileInfo()', function() {
 
-    it.skip('seems to set path', function() {
+    it('seems to set file info', function() {
       const builder = new SttFileWalkerBuilder(compendium1, fileReaderProvider1, contextProvider1, blockProvider1)
-      builder.setPath('path1')
+      const fileInfo1 = fileInfoProvider1.newSttFileInfo('path1')
+      builder.setFileInfo(fileInfo1)
     })
 
-    it.skip('returns the correct path', function() {
+    it('returns the correct file info', function() {
       const builder = new SttFileWalkerBuilder(compendium1, fileReaderProvider1, contextProvider1, blockProvider1)
-      builder.setPath('path1')
-      const path1 = builder.getPath()
+      const fileInfo1 = fileInfoProvider1.newSttFileInfo('path1')
+      builder.setFileInfo(fileInfo1)
+      const fileInfo2 = builder.getFileInfo()
+      strictEqual(fileInfo2, fileInfo1)
+    })
+
+    it('returns file info with correct path', function() {
+      const builder = new SttFileWalkerBuilder(compendium1, fileReaderProvider1, contextProvider1, blockProvider1)
+      const fileInfo1 = fileInfoProvider1.newSttFileInfo('path1')
+      builder.setFileInfo(fileInfo1)
+      const fileInfo2 = builder.getFileInfo()
+      const path1 = fileInfo2.getPath()
       strictEqual(path1, 'path1')
-    })
-
-    it.skip('returns default path', function() {
-      const builder = new SttFileWalkerBuilder(compendium1, fileReaderProvider1, contextProvider1, blockProvider1)
-      const path1 = builder.getPath()
-      strictEqual(path1, '')
     })
 
   })
@@ -177,12 +184,12 @@ describe('2051-filewalkerbuilder', function() {
       equal(filewalker1 instanceof SttFileWalker, true)
     })
 
-    it.skip('builds a file walker with path', function() {
+    it('builds a file walker with path', function() {
       const builder = new SttFileWalkerBuilder(compendium1, fileReaderProvider1, contextProvider1, blockProvider1)
-      builder.setPath('path1')
+      const fileInfo1 = fileInfoProvider1.newSttFileInfo('path1')
+      builder.setFileInfo(fileInfo1)
       const filewalker1 = builder.build()
-      const path1 = filewalker1.getPath()
-      strictEqual(path1, 'path1')
+      equal(filewalker1 instanceof SttFileWalker, true)
     })
 
   })

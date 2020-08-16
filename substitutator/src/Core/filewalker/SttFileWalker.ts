@@ -10,7 +10,7 @@
 //  License: GPL v3
 //
 //  Creation Date: November 2018
-//  Last Modified: July 2020
+//  Last Modified: August 2020
 //
 
 import { SttFileInfo } from '../../Util'
@@ -53,6 +53,7 @@ export class SttFileWalker {
     // open file for reading
     const path = this.fileInfo.getPath()
     const reader = this.fileReaderProvider.newSttFileReader(path)
+    reader.load()
 
     // get initial context
     var context = this.contextProvider.newFileRootContext(path)
@@ -125,6 +126,8 @@ export class SttFileWalker {
     const end = offset
     const name = parent.getAggregatedString()
     const path = this.fileInfo.getPath()
+console.log(name)
+console.log("[", begin, ", ", end, "]")
 
     const block = this.blockProvider.newBlock(name, this.fileInfo, begin, end, [])
     this.compendium.addBlock(name, path, block)

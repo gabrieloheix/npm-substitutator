@@ -36,7 +36,11 @@ describe('1022-fileinfoprovider', function() {
       equal(fileinfo1 instanceof SttFileInfo, true)
     })
 
-    it.skip('returns a new file info with path', function() {
+    it('returns a new file info with path', function() {
+      const provider1 = new SttFileInfoProvider()
+      const fileinfo1 = provider1.newSttFileInfo('/path/')
+      const path = fileinfo1.getPath()
+      strictEqual(path, '/path/')
     })
 
   })

@@ -28,7 +28,7 @@ describe('1041-filereader', function() {
       doesNotThrow(function() {
         const fr = new SttFileReader('test/examples/lorem.txt')
         const loaded = fr.load()
-      strictEqual(loaded, true)
+        strictEqual(loaded, true)
       }, /load\(\) cannot load file content without raising an exception/);
     })
 

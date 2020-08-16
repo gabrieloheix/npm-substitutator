@@ -36,6 +36,17 @@ describe('2052-filewalker', function() {
 
 
 
+  // fileDoesExist
+
+  describe('fileDoesExist()', function() {
+
+    it.skip('fileDoesExist', function() {
+    })
+
+  })
+
+
+
   // walk
 
   describe('walk()', function() {
@@ -54,6 +65,33 @@ describe('2052-filewalker', function() {
       const fileWalkerBuilder2 = new SttFileWalkerBuilder(compendium1,
         fileReaderProvider1, contextProvider1, blockProvider1)
       const fileInfo = fileInfoProvider1.newSttFileInfo('test/examples/lorem.txt')
+      const fileWalker2 = fileWalkerBuilder2.setFileInfo(fileInfo).build()
+      const done = fileWalker2.walk()
+      strictEqual(done, true)
+    })
+
+    it('returns true after walking through an empty file', function() {
+      const fileWalkerBuilder2 = new SttFileWalkerBuilder(compendium1,
+        fileReaderProvider1, contextProvider1, blockProvider1)
+      const fileInfo = fileInfoProvider1.newSttFileInfo('test/examples/empty.txt')
+      const fileWalker2 = fileWalkerBuilder2.setFileInfo(fileInfo).build()
+      const done = fileWalker2.walk()
+      strictEqual(done, true)
+    })
+
+    it('returns true after walking through a single character file', function() {
+      const fileWalkerBuilder2 = new SttFileWalkerBuilder(compendium1,
+        fileReaderProvider1, contextProvider1, blockProvider1)
+      const fileInfo = fileInfoProvider1.newSttFileInfo('test/examples/single.txt')
+      const fileWalker2 = fileWalkerBuilder2.setFileInfo(fileInfo).build()
+      const done = fileWalker2.walk()
+      strictEqual(done, true)
+    })
+
+    it('returns true after walking through a file with block delimiters', function() {
+      const fileWalkerBuilder2 = new SttFileWalkerBuilder(compendium1,
+        fileReaderProvider1, contextProvider1, blockProvider1)
+      const fileInfo = fileInfoProvider1.newSttFileInfo('test/examples/he.txt')
       const fileWalker2 = fileWalkerBuilder2.setFileInfo(fileInfo).build()
       const done = fileWalker2.walk()
       strictEqual(done, true)

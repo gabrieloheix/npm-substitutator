@@ -1,6 +1,8 @@
 
 const { equal, strictEqual, notEqual, throws } = require('assert')
 
+const { SttStringBuilder } = require('../dist/Util')
+
 const { SttContext } = require('../dist/Core/context/SttContext')
 const { SttContextBuilder } = require('../dist/Core/context/SttContextBuilder')
 
@@ -21,26 +23,110 @@ describe('2041-contextbuilder', function() {
 
 
 
-  // setBlockName/getBlockName
+  // setParentContext/getParentContextArray
 
-  describe('setBlockName()/getBlockName()', function() {
+  describe('setParentContext()/getParentContextArray()', function() {
 
-    it.skip('seems to set is block name', function() {
-      const builder = new SttContextBuilder()
-      builder.setBlockName(true)
+    // Needs to be done after 2042
+
+    it.skip('seems to set parent context', function() {
     })
 
-    it.skip('returns is block name true', function() {
+    it.skip('returns parent context', function() {
+    })
+
+  })
+
+
+
+  // setNamingPhase/getNamingPhase
+
+  describe('setNamingPhase()/getNamingPhase()', function() {
+
+    it('seems to set naming phase', function() {
       const builder = new SttContextBuilder()
-      builder.setBlockName(true)
-      const is = builder.getBlockName()
+      builder.setNamingPhase(true)
+    })
+
+    it('returns naming phase true', function() {
+      const builder = new SttContextBuilder()
+      builder.setNamingPhase(true)
+      const is = builder.getNamingPhase()
       strictEqual(is, true)
     })
 
-    it.skip('returns default is block name', function() {
+    it('returns default naming phase', function() {
       const builder = new SttContextBuilder()
-      const is = builder.getBlockName()
+      const is = builder.getNamingPhase()
       strictEqual(is, false)
+    })
+
+  })
+
+
+
+  // setAggregated/getAggregated
+
+  describe('setAggregated()/getAggregated()', function() {
+
+    it('seems to set aggregated', function() {
+      const stringBuilder = new SttStringBuilder()
+      stringBuilder.append('Lorem ')
+      stringBuilder.append('ipsum ')
+      stringBuilder.append('dolor ')
+      stringBuilder.append('sit ')
+      stringBuilder.append('amet.')
+      const builder = new SttContextBuilder()
+      builder.setAggregated(stringBuilder)
+    })
+
+    it('returns aggregated string', function() {
+      const stringBuilder = new SttStringBuilder()
+      stringBuilder.append('Lorem ')
+      stringBuilder.append('ipsum ')
+      stringBuilder.append('dolor ')
+      stringBuilder.append('sit ')
+      stringBuilder.append('amet.')
+      const builder = new SttContextBuilder()
+      builder.setAggregated(stringBuilder)
+      const aggregated = builder.getAggregated()
+      equal(aggregated instanceof SttStringBuilder, true)
+      const to = aggregated.toString()
+      strictEqual(to, 'Lorem ipsum dolor sit amet.')
+    })
+
+    it('returns default aggregated string', function() {
+      const builder = new SttContextBuilder()
+      const aggregated = builder.getAggregated()
+      equal(aggregated instanceof SttStringBuilder, true)
+      const to = aggregated.toString()
+      strictEqual(to, '')
+    })
+
+  })
+
+
+
+  // setOffset/getOffset
+
+  describe('setOffset()/getOffset()', function() {
+
+    it('seems to set offset', function() {
+      const builder = new SttContextBuilder()
+      builder.setOffset(9)
+    })
+
+    it('returns offset number', function() {
+      const builder = new SttContextBuilder()
+      builder.setOffset(9)
+      const offset = builder.getOffset()
+      strictEqual(offset, 9)
+    })
+
+    it('returns default offset', function() {
+      const builder = new SttContextBuilder()
+      const offset = builder.getOffset()
+      strictEqual(offset, 0)
     })
 
   })
@@ -62,12 +148,26 @@ describe('2041-contextbuilder', function() {
       equal(context instanceof SttContext, true)
     })
 
-    it.skip('builds a context with is block name', function() {
+    it('builds a context with is naming phase', function() {
       const builder = new SttContextBuilder()
-      builder.setBlockName(true)
+      builder.setNamingPhase(true)
       const context = builder.build()
-      const is = context.isBlockName()
+      const is = context.isNamingPhase()
       strictEqual(is, true)
+    })
+
+    it('builds a context with aggregated string', function() {
+      const stringBuilder = new SttStringBuilder()
+      stringBuilder.append('this ')
+      stringBuilder.append('is ')
+      stringBuilder.append('a ')
+      stringBuilder.append('string')
+
+      const builder = new SttContextBuilder()
+      builder.setAggregated(stringBuilder)
+      const context = builder.build()
+      const aggregated = context.getAggregatedString()
+      strictEqual(aggregated, 'this is a string')
     })
 
   })

@@ -19,4 +19,18 @@ describe('1021-fileinfo', function() {
   })
 
 
+
+  // getPath
+
+  describe('getPath()', function() {
+
+    it('returns the path', function() {
+      const fi = new SttFileInfo('path1')
+      const path = fi.getPath()
+      strictEqual(path, 'path1')
+    })
+
+  })
+
+
 })

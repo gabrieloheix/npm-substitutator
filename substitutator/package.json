@@ -29,7 +29,7 @@
   "devDependencies": {
     "@types/node": "^10.12.9",
     "istanbul": "^0.4.5",
-    "mocha": "^5.2.0",
+    "mocha": "^8.1.0",
     "typescript": "^3.1.6"
   }
 }
