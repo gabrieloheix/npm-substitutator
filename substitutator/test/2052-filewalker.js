@@ -5,10 +5,10 @@ const { SttFileInfoProvider } = require('../dist/Util')
 const { SttFileReaderProvider } = require('../dist/Util')
 
 const { SttCompendium } = require('../dist/Core')
-const { SttBlockProvider } = require('../dist/Core/SttBlockProvider')
-const { SttContextProvider } = require('../dist/Core/SttContextProvider')
+const { SttBlockProvider } = require('../dist/Core')
+const { SttContextProvider } = require('../dist/Core')
 
-const { SttFileWalker } = require('../dist/Core/filewalker/SttFileWalker')
+const { SttFileWalker } = require('../dist/Core')
 const { SttFileWalkerBuilder } = require('../dist/Core/filewalker/SttFileWalkerBuilder')
 
 

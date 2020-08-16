@@ -1,9 +1,9 @@
 
 const { equal, strictEqual, notEqual, throws } = require('assert')
 
-const { SttContext } = require('../dist/Core/context/SttContext')
+const { SttContext } = require('../dist/Core')
+const { SttContextProvider } = require('../dist/Core')
 const { SttContextBuilder } = require('../dist/Core/context/SttContextBuilder')
-const { SttContextProvider } = require('../dist/Core/SttContextProvider')
 
 
 describe('2043-contextprovider', function() {

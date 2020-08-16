@@ -1,8 +1,8 @@
 
 const { equal, strictEqual, notEqual, throws } = require('assert')
 
-const { SttCompendium } = require('../dist/Core/compendium/SttCompendium')
-const { SttCompendiumProvider } = require('../dist/Core/SttCompendiumProvider')
+const { SttCompendium } = require('../dist/Core')
+const { SttCompendiumProvider } = require('../dist/Core')
 
 
 describe('2032-compendiumprovider', function() {

@@ -3,7 +3,7 @@ const { equal, strictEqual, notEqual, throws } = require('assert')
 
 const { SttStringBuilder } = require('../dist/Util')
 
-const { SttContext } = require('../dist/Core/context/SttContext')
+const { SttContext } = require('../dist/Core')
 const { SttContextBuilder } = require('../dist/Core/context/SttContextBuilder')
 
 

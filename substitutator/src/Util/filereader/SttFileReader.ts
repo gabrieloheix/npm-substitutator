@@ -10,7 +10,7 @@
 //  License: GPL v3
 //
 //  Creation Date: December 2019
-//  Last Modified: January 2020
+//  Last Modified: August 2020
 //
 
 import * as fs from 'fs'
@@ -40,6 +40,10 @@ export class SttFileReader {
     return true
   }
 
+  advance(): void {
+    this.offset++
+  }
+
   hasMore(): boolean {
     if (this.offset >= this.length) {
       return false
@@ -47,8 +51,12 @@ export class SttFileReader {
     return true
   }
 
-  getNextCharacter(): string {
-    return this.content[ this.offset++ ]
+  getCharacter(): string {
+    return this.content[ this.offset ]
+  }
+
+  getOffset(): number {
+    return this.offset
   }
 
 }

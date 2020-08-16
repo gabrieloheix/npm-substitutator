@@ -1,8 +1,8 @@
 
 const { equal, strictEqual, notEqual, throws } = require('assert')
 
-const { SttFileReader } = require('../dist/Util/filereader/SttFileReader')
-const { SttFileReaderProvider } = require('../dist/Util/SttFileReaderProvider')
+const { SttFileReader } = require('../dist/Util')
+const { SttFileReaderProvider } = require('../dist/Util')
 
 
 describe('1042-filereaderprovider', function() {

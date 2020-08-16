@@ -1,7 +1,7 @@
 {
   "name": "substitutator",
   "version": "0.0.1",
-  "description": "Substitute some file content with others",
+  "description": "Substitute some file content by others",
   "main": "index.js",
   "scripts": {
     "test": "mocha",

@@ -36,6 +36,25 @@ describe('1041-filereader', function() {
 
 
 
+  // advance
+
+  describe('advance()', function() {
+
+    it('seems to advance inside the file', function() {
+      doesNotThrow(function() {
+        const fr = new SttFileReader('test/examples/lorem.txt')
+        fr.load()
+        fr.advance()
+      }, /doesNotThrow\(\) does not run without raising an exception/);
+    })
+
+    it.skip('advance at the end of the file throws an error', function() {
+    })
+
+  })
+
+
+
   // hasMore
 
   describe('hasMore()', function() {
@@ -58,7 +77,7 @@ describe('1041-filereader', function() {
     it('returns false when end of file is reached', function() {
       const fr = new SttFileReader('test/examples/single.txt')
       fr.load()
-      fr.getNextCharacter()
+      fr.advance()
       const has = fr.hasMore()
       strictEqual(has, false)
     })
@@ -74,39 +93,40 @@ describe('1041-filereader', function() {
 
 
 
-  // getNextCharacter
+  // getCharacter
 
-  describe('getNextCharacter()', function() {
+  describe('getCharacter()', function() {
 
     it('seems to return the next character', function() {
       doesNotThrow(function() {
         const fr = new SttFileReader('test/examples/lorem.txt')
         fr.load()
-        fr.getNextCharacter()
-      }, /getNextCharacter\(\) does not run without raising an exception/);
+        fr.getCharacter()
+      }, /getCharacter\(\) does not run without raising an exception/);
     })
 
     it('returns the first character', function() {
       const fr = new SttFileReader('test/examples/lorem.txt')
       fr.load()
-      const character = fr.getNextCharacter()
+      const character = fr.getCharacter()
       strictEqual(character, 'L')
     })
 
     it('returns the second character', function() {
       const fr = new SttFileReader('test/examples/lorem.txt')
       fr.load()
-      fr.getNextCharacter()
-      const character = fr.getNextCharacter()
+      fr.advance()
+      const character = fr.getCharacter()
       strictEqual(character, 'o')
     })
 
     it('returns the last character', function() {
       const fr = new SttFileReader('test/examples/lorem.txt')
       fr.load()
-      var character = ''
+      var character;
       while (fr.hasMore()) {
-        character = fr.getNextCharacter()
+        character = fr.getCharacter()
+        fr.advance()
       }
       strictEqual(character, '.')
     })

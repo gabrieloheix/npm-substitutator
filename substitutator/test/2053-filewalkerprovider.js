@@ -1,5 +1,5 @@
 
-const { equal, strictEqual, notEqual, throws, doesNotThrow } = require('assert')
+const { equal, strictEqual, notEqual, throws } = require('assert')
 
 const { SttFileInfoProvider } = require('../dist/Util')
 const { SttFileReaderProvider } = require('../dist/Util')
@@ -52,7 +52,14 @@ describe('2053-filewalkerprovider', function() {
       equal(fileWalker instanceof SttFileWalker, true)
     })
 
-    it.skip('returns a new file walker that file does exist', function() {
+    it.skip('returns a new file walker that checks file does exist', function() {
+    })
+
+    it('returns a new file walker that walks', function() {
+      const provider1 = new SttFileWalkerProvider(compendium1,
+            fileReaderProvider1, fileInfoProvider1, contextProvider1, blockProvider1)
+      const fileWalker = provider1.newFileWalker('test/examples/lorem.txt')
+      fileWalker.walk()
     })
 
   })

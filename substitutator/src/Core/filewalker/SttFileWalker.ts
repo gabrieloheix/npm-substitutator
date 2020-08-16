@@ -60,16 +60,17 @@ export class SttFileWalker {
 
     // process character per character
     while (reader.hasMore()) {
-      context = this.step(reader, context)
+      reader.advance()
+      const character = reader.getCharacter()
+      const offset = reader.getOffset()
+      context = this.step(character, offset, context)
     }
 
     return true
   }
 
 
-  private step(reader: SttFileReader, context: SttContext): SttContext {
-    const character = reader.getNextCharacter()
-    var offset = 0  // get offset from new needed reader get offset
+  private step(character: string, offset: number, context: SttContext): SttContext {
 
     // currently reading block name
     if (context.isNamingPhase()) {

@@ -1,9 +1,9 @@
 
 const { equal, strictEqual, notEqual, throws } = require('assert')
 
-const { SttFileInfo } = require('../dist/Util/fileinfo/SttFileInfo')
+const { SttFileInfo } = require('../dist/Util')
 
-const { SttBlock } = require('../dist/Core/block/SttBlock')
+const { SttBlock } = require('../dist/Core')
 const { SttBlockBuilder } = require('../dist/Core/block/SttBlockBuilder')
 
 

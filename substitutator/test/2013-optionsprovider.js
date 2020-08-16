@@ -1,8 +1,8 @@
 
 const { equal, strictEqual, notEqual, throws } = require('assert')
 
-const { SttOptions } = require('../dist/Core/options/SttOptions')
-const { SttOptionsProvider } = require('../dist/Core/SttOptionsProvider')
+const { SttOptions } = require('../dist/Core')
+const { SttOptionsProvider } = require('../dist/Core')
 
 
 describe('2013-optionsprovider', function() {

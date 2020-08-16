@@ -1,8 +1,8 @@
 
 const { equal, strictEqual, notEqual, throws } = require('assert')
 
-const { SttFileInfo } = require('../dist/Util/fileinfo/SttFileInfo')
-const { SttFileInfoProvider } = require('../dist/Util/SttFileInfoProvider')
+const { SttFileInfo } = require('../dist/Util')
+const { SttFileInfoProvider } = require('../dist/Util')
 
 
 describe('1022-fileinfoprovider', function() {

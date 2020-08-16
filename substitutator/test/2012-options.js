@@ -1,7 +1,7 @@
 
 const { equal, strictEqual, notEqual, throws } = require('assert')
 
-const { SttOptions } = require('../dist/Core/options/SttOptions')
+const { SttOptions } = require('../dist/Core')
 const { SttOptionsBuilder } = require('../dist/Core/options/SttOptionsBuilder')
 
 

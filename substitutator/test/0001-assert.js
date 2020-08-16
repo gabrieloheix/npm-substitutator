@@ -140,4 +140,34 @@ describe('0001-assert', function() {
   })
 
 
+
+  // doesNotThrow
+
+  describe('doesNotThrow()', function() {
+
+    it('is a function', function(){
+      const assert = require('assert');
+      const fail = (typeof assert.doesNotThrow !== 'function')
+      assert.equal(fail, false)
+    })
+
+    it('will not throw if no error', function(){
+      const assert = require('assert');
+      assert.doesNotThrow(function() {
+        const str = 'Nothing is happening here.'
+      })
+    })
+
+    it('will throw on error', function(){
+      const assert = require('assert');
+      assert.throws(function() {
+        assert.doesNotThrow(function() {
+          throw new Error('Should throw doesNotThrow()')
+        })
+      })
+    })
+
+  })
+
+
 })
