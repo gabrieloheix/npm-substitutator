@@ -10,45 +10,77 @@
 //  License: GPL v3
 //
 //  Creation Date: November 2018
-//  Last Modified: November 2018
+//  Last Modified: August 2020
 //
 
 
 export class SttStringBuilder {
 
-  private static readonly ENOUGH = 100
+  private static readonly SPLIT = 100
 
 
-  private concatenated: string
+  private olders: string[]
   private recent: string[]
 
 
   constructor() {
-    this.concatenated = ''
+    this.olders = []
     this.recent = []
   }
 
 
   append(piece: string): void {
-    this.save(piece)
-  }
-
-  toString(): string {
-    this.swallow()
-    return this.concatenated
-  }
-
-
-  private save(piece: string): void {
-    if (this.recent.length > SttStringBuilder.ENOUGH) {
-      this.swallow()
+    if (this.recent.length > SttStringBuilder.SPLIT) {
+      this.aggregate()
     }
     this.recent.push(piece)
   }
 
-  private swallow(): void {
-    this.concatenated += this.recent.join('')
-    this.recent.length = 0
+  getLast(n: number) {
+    let remaining = n
+    const extracted = []
+
+    for (let i = this.recent.length - 1; i >= 0; i--) {
+      const piece = this.recent[i]
+      if (piece.length >= remaining) {
+        // piece is too long
+        const sub = piece.substring(piece.length - remaining)
+        extracted.unshift(sub)
+        return extracted.join('')
+      } else {
+        // piece will not be enough
+        remaining -= piece.length
+        extracted.unshift(piece)
+      }
+    }
+
+    for (let i = this.olders.length - 1; i >= 0; i--) {
+      const piece = this.olders[i]
+      if (piece.length >= remaining) {
+        // piece is too long
+        const sub = piece.substring(piece.length - remaining)
+        extracted.unshift(sub)
+        return extracted.join('')
+      } else {
+        // piece will not be enough
+        remaining -= piece.length
+        extracted.unshift(piece)
+      }
+    }
+
+    return extracted.join('')
+  }
+
+  toString(): string {
+    this.aggregate()
+    return this.olders.join('')
+  }
+
+
+  private aggregate(): void {
+    const concatenated = this.recent.join('')
+    this.olders.push(concatenated)
+    this.recent = []
   }
 
 }

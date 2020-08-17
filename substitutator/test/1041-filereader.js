@@ -123,7 +123,7 @@ describe('1041-filereader', function() {
     it('returns the last character', function() {
       const fr = new SttFileReader('test/examples/lorem.txt')
       fr.load()
-      var character;
+      let character;
       while (fr.hasMore()) {
         character = fr.getCharacter()
         fr.advance()

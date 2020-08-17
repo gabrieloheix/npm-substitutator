@@ -56,7 +56,7 @@ export class SttFileWalker {
     reader.load()
 
     // get initial context
-    var context = this.contextProvider.newFileRootContext(path)
+    let context = this.contextProvider.newFileRootContext(path)
 
     // process character per character
     while (reader.hasMore()) {
